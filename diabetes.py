@@ -18,7 +18,7 @@ image1 = Image.open('diabetes1.png')
 st.image(image1, use_column_width=True)
 
 #Get the data
-path = "https://github.com/AnisFaqihah/Diabetes-Prediction/raw/main/diabetes.csv"
+path = "https://github.com/AnisFaqihah/diabetes-prediction-2/raw/main/diabetes.csv"
 df = pd.read_csv(path)
 
 #Set a subheader
