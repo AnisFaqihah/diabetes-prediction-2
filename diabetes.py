@@ -14,7 +14,7 @@ Predict if someone has diabetes using Random Forest!
 """)
 
 #Open and display image
-image1 = Image.open('diabetes1.png')
+image1 = Image.open('diabetes4.png')
 st.image(image1, use_column_width=True)
 
 #Get the data
