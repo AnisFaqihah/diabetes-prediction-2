@@ -21,22 +21,6 @@ st.image(image1, use_column_width=True)
 path = "https://github.com/AnisFaqihah/diabetes-prediction-2/raw/main/diabetes.csv"
 df = pd.read_csv(path)
 
-#Set a subheader
-st.subheader('Data Information')
-
-#Show the data as table
-st.dataframe(df)
-
-st.markdown("***")
-
-#Show statistics on the data
-st.write(df.describe())
-
-st.markdown("***") 
-
-#Show the data as a chart
-chart = st.bar_chart(df)
-
 #Split the data into independent 'X' and dependent 'Y' variables
 X = df.iloc[:, 0:8].values
 Y = df.iloc[:, -1].values
@@ -71,10 +55,6 @@ def get_user_input():
 
 #Store the user input into a variable
 user_input = get_user_input()
-
-#Open and display image
-image2 = Image.open('diabetes2.png')
-st.image(image2, use_column_width=True)
 
 #Set a subheader and display the users input
 st.subheader('User Input: ')
