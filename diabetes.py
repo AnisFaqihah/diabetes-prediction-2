@@ -112,8 +112,9 @@ tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
 #tree_cv.fit(X_train, Y_train)
   
 # Print the tuned score
-st.subheader('Best score:')
-st.write(tree_cv.best_score_)
+#st.subheader('Best score:')
+#st.write(tree_cv.best_score_)
+st.write("Best score is {}".format(tree_cv.best_score_))
 
 #Newline
 st.markdown("***")
