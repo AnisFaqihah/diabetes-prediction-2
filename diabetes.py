@@ -99,6 +99,7 @@ parameter_cross_validation=st.sidebar.slider('Number of Cross validation split',
 
 st.sidebar.subheader('Other Parameters')
 parameter_random_state = st.sidebar.slider('Seed number (random_state)', 0, 1000, 42, 1)
+parameter_bootstrap1 = st.sidebar.selectbox('Bootstrap samples when building trees',options=[True, False])
 parameter_bootstrap = st.sidebar.select_slider('Bootstrap samples when building trees (bootstrap)', options=[True, False])
 parameter_n_jobs = st.sidebar.select_slider('Number of jobs to run in parallel (n_jobs)', options=[1, -1])
 n_estimators_range = np.arange(parameter_n_estimators[0], parameter_n_estimators[1]+parameter_n_estimators_step, parameter_n_estimators_step)
