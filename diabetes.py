@@ -46,7 +46,7 @@ def model(df):
    X_test = sc.transform(X_test) 
 
 #Get input from users 
-st.sidebar.header('User Input')    
+st.sidebar.header('USER INPUT SECTION')    
  
 #Get the feature input from user
 def get_user_input():
@@ -82,7 +82,7 @@ st.write(user_input)
 
 st.sidebar.write('---')
 st.markdown("")
-st.sidebar.header('Fine tuning via HyperParameter Optimization') 
+st.sidebar.header('FINE TUNING SECTION') 
 split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 50, 90, 80, 5)
 
 st.sidebar.subheader('Learning Parameters')
