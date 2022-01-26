@@ -92,12 +92,18 @@ def get_user_input1():
     max_features =st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
     min_samples_leaf = st.sidebar.number_input('Min samples leaf', 9)
     criterion = st.sidebar.selectbox('criterion',('gini', 'entropy'))
+    
+    #Store dictionary into variable
+    tune_data = {"max_depth": max_depth,
+                  "max_features": max_features,
+                  "min_samples_leaf": min_sample_leaf,
+                  "criterion": criterion
+                 }
+    #Transform the data into a data frame
+    criteria = pd.DataFrame(tune_data, index = [0])
+    return criteria
 
-#param_dist = {"max_depth": [3, None],
-#              "max_features": randint(1, 9),
-#              "min_samples_leaf": randint(1, 9),
-#              "criterion": ["gini", "entropy"]}
-
+#Store the user input into a variable
 param_dist = get_user_input1()
 
 # Instantiating RandomizedSearchCV object
