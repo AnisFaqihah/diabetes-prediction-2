@@ -59,7 +59,7 @@ user_input = get_user_input()
 #Set a subheader and display the users input
 st.subheader('User Input: ')
 #st.write(user_input)
-st.write('Number of time pregnant':pregnancies)
+st.write('Number of time pregnant',pregnancies)
 
 #Create and train the model
 RandomForestClassifier = RandomForestClassifier()
