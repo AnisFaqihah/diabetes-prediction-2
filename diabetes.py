@@ -19,6 +19,8 @@ Predict if someone has diabetes using Random Forest!
 image1 = Image.open('diabetes4.png')
 st.image(image1, use_column_width=True)
 
+############################TRAINING AND TESTING#######################################
+
 #Get the data
 path = "https://github.com/AnisFaqihah/diabetes-prediction-2/raw/main/diabetes.csv"
 df = pd.read_csv(path)
@@ -28,9 +30,15 @@ X = df.iloc[:, 0:8].values
 Y = df.iloc[:, -1].values
 
 #Split the dataset into 75% Training and 25% Testing
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
+# Data splitting
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size)
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+#X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
 
 #Get the feature input from user
+st.sidebar.header('USER INPUT SECTION') 
 def get_user_input():
     pregnancies = st.sidebar.number_input('Number of time pregnant',0,17)
     glucose = st.sidebar.slider('Glucose concentration', 0, 199, 117)
@@ -77,20 +85,25 @@ prediction = RandomForestClassifier.predict(user_input)
 st.subheader('Prediction: ')
 st.write(prediction)
 
-#Newline
-st.markdown("***")
+##################################FINE TUNING##########################################
 
-#Open and display image
-image3 = Image.open('diabetes3.png')
-st.image(image3, use_column_width=True)
-
-##########################################
 # Creating the hyperparameter grid 
-param_dist = {"max_depth": [3, None],
-              "max_features": randint(1, 9),
-              "min_samples_leaf": randint(1, 9),
-              "criterion": ["gini", "entropy"]}
-  
+st.sidebar.header('FINE TUNING SECTION')
+split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 50, 90, 80, 5)
+st.sidebar.subheader('Learning Parameters')
+def get_user_input1():
+    max_depth = st.sidebar.slider('Max depth', 5, 15, (5,8), 2)
+    max_features =st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
+    min_samples_leaf = st.sidebar.number_input('Min samples leaf', 9)
+    criterion = st.sidebar.selectbox('criterion',('gini', 'entropy'))
+
+#param_dist = {"max_depth": [3, None],
+#              "max_features": randint(1, 9),
+#              "min_samples_leaf": randint(1, 9),
+#              "criterion": ["gini", "entropy"]}
+
+param_dist = get_user_input1()
+
 # Instantiating RandomizedSearchCV object
 tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
   
@@ -99,3 +112,10 @@ tree_cv.fit(X_train, Y_train)
 # Print the tuned parameters and score
 st.write("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
 st.write("Best score is {}".format(tree_cv.best_score_))
+
+#Newline
+st.markdown("***")
+
+#Open and display image
+image3 = Image.open('diabetes3.png')
+st.image(image3, use_column_width=True)
