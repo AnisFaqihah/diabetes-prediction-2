@@ -10,7 +10,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score,classification_report,plot_confusion_matrix
 from PIL import Image
 import streamlit as st
-import plotly.graph_objects as go
 
 #Create title and sub-title
 st.write("""
