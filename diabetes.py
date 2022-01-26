@@ -82,7 +82,7 @@ st.write(prediction)
 
 ##################################FINE TUNING##########################################
 
-# Creating the hyperparameter grid 
+#Creating the hyperparameter grid 
 st.markdown("***")
 st.sidebar.header('FINE TUNING SECTION')
 st.markdown("")
@@ -103,7 +103,7 @@ param_dist = get_user_input1()
 # Instantiating RandomizedSearchCV object
 tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
   
-tree_cv.fit(X_train, Y_train)
+#tree_cv.fit(X_train, Y_train)
   
 # Print the tuned parameters and score
 st.write("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
