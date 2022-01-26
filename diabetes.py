@@ -4,6 +4,8 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from scipy.stats import randint
+from sklearn.model_selection import RandomizedSearchCV
 from PIL import Image
 import streamlit as st
 
@@ -81,3 +83,22 @@ st.markdown("***")
 #Open and display image
 image3 = Image.open('diabetes3.png')
 st.image(image3, use_column_width=True)
+
+##########################################
+# Creating the hyperparameter grid 
+param_dist = {"max_depth": [3, None],
+              "max_features": randint(1, 9),
+              "min_samples_leaf": randint(1, 9),
+              "criterion": ["gini", "entropy"]}
+  
+# Instantiating Decision Tree classifier
+tree = RandomForestClassifier()
+  
+# Instantiating RandomizedSearchCV object
+tree_cv = RandomizedSearchCV(tree, param_dist, cv = 5)
+  
+tree_cv.fit(X, y)
+  
+# Print the tuned parameters and score
+print("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
+print("Best score is {}".format(tree_cv.best_score_))
