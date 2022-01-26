@@ -29,21 +29,35 @@ Y = df.iloc[:, -1].values
 X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
 
 #Get the feature input from user
-def get_user_input1():
+def get_user_input():
     pregnancies = st.sidebar.slider('Number of time pregnant', 0, 17, 3)
-    
+    glucose = st.sidebar.slider('Glucose concentration', 0, 199, 117)
+    blood_pressure = st.sidebar.slider('Diastolic blood pressure (mm Hg)', 0, 122, 72)
+    skin_thickness = st.sidebar.slider('Skin thickness (mm)', 0, 99, 23)
+    insulin = st.sidebar.slider('2 hour serum insulin (mu U/ml)', 0.0, 846.0, 30.5)
+    BMI = st.sidebar.slider('Body Mass Index/BMI', 0.0, 67.1, 32.0)
+    DPF = st.sidebar.slider('Diabetes Pedigree Function', 0.078, 2.42, 0.3725)
+    age = st.sidebar.slider('Age', 21, 81, 29)
+
     #Store dictionary into variable
-    user_data = {'Number of time pregnant' : pregnancies}
-    
+    user_data = {'Number of time pregnant' : pregnancies,
+                 'Glucose concentration' : glucose,
+                 'Diastolic blood pressure' : blood_pressure,
+                 'Skin thickness' : skin_thickness,
+                 '2 hour serum insulin' : insulin,
+                 'Body Mass Index' : BMI,
+                 'Diabetes Predigree Function' : DPF,
+                 'Age' : age
+                }
     #Transform the data into a data frame
     features = pd.DataFrame(user_data, index = [0])
     return features
 
 #Store the user input into a variable
-user_input = get_user_input1()
+user_input = get_user_input()
 
 #Set a subheader and display the users input
-st.subheader('Number of pregnancies: ')
+st.subheader('User Input: ')
 st.write(user_input)
 
 #Create and train the model
@@ -62,31 +76,8 @@ st.subheader('Prediction: ')
 st.write(prediction)
 
 #Newline
-st.markdown("***")
+st.markdown("*")
 
 #Open and display image
 image3 = Image.open('diabetes3.png')
 st.image(image3, use_column_width=True)
-
-
-    #glucose = st.sidebar.slider('Glucose concentration', 0, 199, 117)
-    #blood_pressure = st.sidebar.slider('Diastolic blood pressure (mm Hg)', 0, 122, 72)
-    #skin_thickness = st.sidebar.slider('Skin thickness (mm)', 0, 99, 23)
-    #insulin = st.sidebar.slider('2 hour serum insulin (mu U/ml)', 0.0, 846.0, 30.5)
-    #BMI = st.sidebar.slider('Body Mass Index/BMI', 0.0, 67.1, 32.0)
-    #DPF = st.sidebar.slider('Diabetes Pedigree Function', 0.078, 2.42, 0.3725)
-    #age = st.sidebar.slider('Age', 21, 81, 29)
-
-    #Store dictionary into variable
-    #user_data = {
-     #            'Glucose concentration' : glucose,
-     #           'Diastolic blood pressure' : blood_pressure,
-     #            'Skin thickness' : skin_thickness,
-     #            '2 hour serum insulin' : insulin,
-     #            'Body Mass Index' : BMI,
-     #            'Diabetes Predigree Function' : DPF,
-     #            'Age' : age
-     #           }
-    
-
-
