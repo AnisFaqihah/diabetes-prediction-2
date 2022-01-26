@@ -30,12 +30,7 @@ X = df.iloc[:, 0:8].values
 Y = df.iloc[:, -1].values
 
 #Split the dataset into 75% Training and 25% Testing
-# Data splitting
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size)
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
-#X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
 
 #Get the feature input from user
 st.sidebar.header('USER INPUT SECTION') 
@@ -88,8 +83,9 @@ st.write(prediction)
 ##################################FINE TUNING##########################################
 
 # Creating the hyperparameter grid 
+st.markdown("***")
 st.sidebar.header('FINE TUNING SECTION')
-split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 50, 90, 80, 5)
+st.markdown("")
 st.sidebar.subheader('Learning Parameters')
 def get_user_input1():
     max_depth = st.sidebar.slider('Max depth', 5, 15, (5,8), 2)
