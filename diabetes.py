@@ -102,10 +102,6 @@ parameter_random_state = st.sidebar.slider('Seed number (random_state)', 0, 1000
 parameter_bootstrap = st.sidebar.select_slider('Bootstrap samples when building trees (bootstrap)', options=[True, False])
 parameter_n_jobs = st.sidebar.select_slider('Number of jobs to run in parallel (n_jobs)', options=[1, -1])
 n_estimators_range = np.arange(parameter_n_estimators[0], parameter_n_estimators[1]+parameter_n_estimators_step, parameter_n_estimators_step)
-"""
-if parameter_n_estimators[0] is 5 and parameter_n_estimators[1] 25 and parameter_n_estimators_step is 5
-then array will be [5,10,15,20,25]
-"""
 max_depth_range =np.arange(parameter_max_depth[0],parameter_max_depth[1]+parameter_max_depth_step, parameter_max_depth_step)
 param_grid = dict(max_features=parameter_max_features,
 n_estimators=n_estimators_range,max_depth=max_depth_range)
