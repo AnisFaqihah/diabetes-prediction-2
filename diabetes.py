@@ -36,7 +36,7 @@ def get_user_input():
     skin_thickness = st.sidebar.slider('Skin thickness (mm)', 0, 99, 23)
     insulin = st.sidebar.slider('2 hour serum insulin (mu U/ml)', 0.0, 846.0, 30.5)
     BMI = st.sidebar.slider('Body Mass Index/BMI', 0.0, 67.1, 32.0)
-    DPF = st.sidebar.slider('DPF', 0.078, 2.42, 0.3725)
+    DPF = st.sidebar.slider('Diabetes Pedigree Function', 0.078, 2.42, 0.3725)
     age = st.sidebar.slider('Age', 21, 81, 29)
 
     #Store dictionary into variable
