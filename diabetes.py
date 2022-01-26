@@ -80,22 +80,20 @@ user_input = get_user_input()
 st.subheader('User Input: ')
 st.write(user_input)
 
+st.sidebar.write('---')
+st.markdown("")
 st.sidebar.header('Fine tuning via HyperParameter Optimization') 
 split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 50, 90, 80, 5)
 
 st.sidebar.subheader('Learning Parameters')
 parameter_n_estimators = st.sidebar.slider('Number of estimators for Random Forest (n_estimators)', 0, 500, (10,50), 50)
-parameter_n_estimators_step = st.sidebar.number_input('Step size for n_estimators', 10)
-
-st.sidebar.write('---')
-parameter_max_features =st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
+parameter_cross_validation=st.sidebar.slider('Number of Cross validation split', 2, 10)
 parameter_max_depth = st.sidebar.slider('Maximum depth', 5, 15, (5,8), 2)
 parameter_max_depth_step=st.sidebar.number_input('Step size for max depht',1,3)
-
-st.sidebar.write('---')
+parameter_n_estimators_step = st.sidebar.number_input('Step size for n_estimators', 10)
+parameter_max_features =st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
 parameter_criterion = st.sidebar.selectbox('criterion',('gini', 'entropy'))
 st.sidebar.write('---')
-parameter_cross_validation=st.sidebar.slider('Number of Cross validation split', 2, 10)
 
 st.sidebar.subheader('Other Parameters')
 parameter_bootstrap = st.sidebar.selectbox('Bootstrap samples when building trees',options=[True, False])
