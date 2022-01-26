@@ -127,7 +127,7 @@ st.info( accuracy_score(Y_test, Y_pred_test) )
 
 st.write("The best parameters are %s with a score of %0.2f" %(grid.best_params_, grid.best_score_))
 
-st.subheader(‘Model Parameters’)
+st.subheader('Model Parameters')
 st.write(grid.get_params())
 
 #Newline
