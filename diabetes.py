@@ -94,7 +94,7 @@ tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
 tree_cv.fit(X_train, Y_train)
   
 # Print the tuned parameters and score
-st.subheader('Tuned Decision Tree Parameters:')
+st.subheader('Tuned Parameters:')
 st.write(tree_cv.best_params_)
 st.subheader('Best score:')
 st.write(tree_cv.best_score_)
