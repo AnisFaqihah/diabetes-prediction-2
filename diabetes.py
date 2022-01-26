@@ -36,15 +36,15 @@ if st.button('Make prediction'):
     dataset = pd.get_dummies(df, columns = ['pregnancies', 'glucose', 'blood_pressure', 'skin_thickness', 'insulin', 'BMI', 'DPT', 'age'])
     model(dataset)
  
- #Split the data into independent 'X' and dependent 'Y' variables
- def model(df):
-    Y = dataset['outcome']
-    X = dataset.drop(['outcome'], axis = 1)
-    # Data splitting
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size)
-    sc = StandardScaler()
-    X_train = sc.fit_transform(X_train)
-    X_test = sc.transform(X_test) 
+#Split the data into independent 'X' and dependent 'Y' variables
+def model(df):
+   Y = dataset['outcome']
+   X = dataset.drop(['outcome'], axis = 1)
+   # Data splitting
+   X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size)
+   sc = StandardScaler()
+   X_train = sc.fit_transform(X_train)
+   X_test = sc.transform(X_test) 
 
 #Get input from users 
 st.sidebar.header('User Input Section')    
