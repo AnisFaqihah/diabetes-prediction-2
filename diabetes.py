@@ -87,33 +87,24 @@ st.markdown("***")
 st.sidebar.header('FINE TUNING SECTION')
 st.markdown("")
 st.sidebar.subheader('Learning Parameters')
-def get_tune_input():
-    max_depth = st.sidebar.slider('Max depth', 5, 15, (5,8), 2)
-    max_features =st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
-    min_samples_leaf = st.sidebar.number_input('Min samples leaf', 9)
-    criterion = st.sidebar.selectbox('criterion',('gini', 'entropy'))
+st.sidebar.slider('Max depth', 5, 15, (5,8), 2)
+st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
+st.sidebar.number_input('Min samples leaf', 9)
+st.sidebar.selectbox('criterion',('gini', 'entropy'))
     
-    #Store dictionary into variable
-    tune_data = {"max_depth": max_depth,
-                  "max_features": max_features,
-                  "min_samples_leaf": min_samples_leaf,
-                  "criterion": criterion
-                 }
-    #Transform the data into a data frame
-    criteria = pd.DataFrame(tune_data)
-    return criteria
-
-#Store the user input into a variable
-param_dist = get_tune_input()
-
+# Creating the hyperparameter grid 
+param_dist = {"max_depth": [3, None],
+              "max_features": randint(1, 9),
+              "min_samples_leaf": randint(1, 9),
+              "criterion": ["gini", "entropy"]}
+  
 # Instantiating RandomizedSearchCV object
-tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
+tree_cv = RandomizedSearchCV(tree, param_dist, cv = 5)
   
-#tree_cv.fit(X_train, Y_train)
+tree_cv.fit(X_train, Y_train)
   
-# Print the tuned score
-#st.subheader('Best score:')
-#st.write(tree_cv.best_score_)
+# Print the tuned parameters and score
+st.write("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
 st.write("Best score is {}".format(tree_cv.best_score_))
 
 #Newline
