@@ -30,14 +30,14 @@ X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_st
 
 #Get the feature input from user
 def get_user_input():
-    pregnancies = st.sidebar.slider('pregnancies', 0, 17, 3)
-    glucose = st.sidebar.slider('glucose', 0, 199, 117)
-    blood_pressure = st.sidebar.slider('blood_pressure', 0, 122, 72)
-    skin_thickness = st.sidebar.slider('skin_thickness', 0, 99, 23)
-    insulin = st.sidebar.slider('insulin', 0.0, 846.0, 30.5)
-    BMI = st.sidebar.slider('BMI', 0.0, 67.1, 32.0)
+    pregnancies = st.sidebar.slider('Number of time pregnant', 0, 17, 3)
+    glucose = st.sidebar.slider('Glucose concentration', 0, 199, 117)
+    blood_pressure = st.sidebar.slider('Diastolic blood pressure (mm Hg)', 0, 122, 72)
+    skin_thickness = st.sidebar.slider('Skin thickness (mm)', 0, 99, 23)
+    insulin = st.sidebar.slider('2 hour serum insulin (mu U/ml)', 0.0, 846.0, 30.5)
+    BMI = st.sidebar.slider('Body Mass Index/BMI', 0.0, 67.1, 32.0)
     DPF = st.sidebar.slider('DPF', 0.078, 2.42, 0.3725)
-    age = st.sidebar.slider('age', 21, 81, 29)
+    age = st.sidebar.slider('Age', 21, 81, 29)
 
     #Store dictionary into variable
     user_data = {'pregnancies' : pregnancies,
@@ -74,6 +74,9 @@ prediction = RandomForestClassifier.predict(user_input)
 #Set a subheader and display the prediction
 st.subheader('Prediction: ')
 st.write(prediction)
+
+#Newline
+st.markdown("***")
 
 #Open and display image
 image3 = Image.open('diabetes3.png')
