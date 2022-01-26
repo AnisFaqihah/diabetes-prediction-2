@@ -40,13 +40,13 @@ def get_user_input():
     age = st.sidebar.slider('Age', 21, 81, 29)
 
     #Store dictionary into variable
-    user_data = {'Number of time pregnant' : pregnancies,
-                 'Glucose concentration' : glucose,
-                 'Diastolic blood pressure' : blood_pressure,
+    user_data = {'Pregnancies' : pregnancies,
+                 'Glucose' : glucose,
+                 'Blood pressure' : blood_pressure,
                  'Skin thickness' : skin_thickness,
-                 '2 hour serum insulin' : insulin,
-                 'Body Mass Index' : BMI,
-                 'Diabetes Predigree Function' : DPF,
+                 'Insulin' : insulin,
+                 'BMI' : BMI,
+                 'DPF' : DPF,
                  'Age' : age
                 }
     #Transform the data into a data frame
