@@ -76,7 +76,7 @@ st.subheader('Prediction: ')
 st.write(prediction)
 
 #Newline
-st.markdown("*")
+st.markdown("***")
 
 #Open and display image
 image3 = Image.open('diabetes3.png')
