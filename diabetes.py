@@ -99,7 +99,7 @@ param_dist = {"max_depth": [3, None],
               "criterion": ["gini", "entropy"]}
   
 # Instantiating RandomizedSearchCV object
-tree_cv = RandomizedSearchCV(tree, param_dist, cv = 5)
+tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
   
 tree_cv.fit(X_train, Y_train)
   
