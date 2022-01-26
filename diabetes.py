@@ -82,16 +82,6 @@ st.write(prediction)
 
 ##################################FINE TUNING##########################################
 
-#Creating the hyperparameter grid 
-st.markdown("***")
-st.sidebar.header('FINE TUNING SECTION')
-st.markdown("")
-st.sidebar.subheader('Learning Parameters')
-st.sidebar.slider('Max depth', 5, 15, (5,8), 2)
-st.sidebar.multiselect('Max Features (You can select multiple options)',['auto', 'sqrt', 'log2'],['auto'])
-st.sidebar.number_input('Min samples leaf', 9)
-st.sidebar.selectbox('criterion',('gini', 'entropy'))
-    
 # Creating the hyperparameter grid 
 param_dist = {"max_depth": [3, None],
               "max_features": randint(1, 9),
@@ -107,7 +97,7 @@ tree_cv.fit(X_train, Y_train)
 st.subheader('Tuned Decision Tree Parameters: ')
 st.write(tree_cv.best_params_)
 st.subheader('Best score: ')
-st.write("Best score is {}".format(tree_cv.best_score_))
+st.write(tree_cv.best_score_)
 
 #Newline
 st.markdown("***")
