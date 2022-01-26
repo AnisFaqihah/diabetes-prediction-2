@@ -94,7 +94,7 @@ param_dist = {"max_depth": [3, None],
 # Instantiating RandomizedSearchCV object
 tree_cv = RandomizedSearchCV(RandomForestClassifier, param_dist, cv = 5)
   
-tree_cv.fit(X, y)
+tree_cv.fit(X_train, Y_train)
   
 # Print the tuned parameters and score
 print("Tuned Decision Tree Parameters: {}".format(tree_cv.best_params_))
