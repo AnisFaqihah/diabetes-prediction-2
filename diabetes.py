@@ -19,7 +19,7 @@ Predict if someone has diabetes using Random Forest!
 image1 = Image.open('diabetes4.png')
 st.image(image1, use_column_width=True)
 
-############################TRAINING AND TESTING#######################################
+#######################################################################################
 
 #Get the data
 path = "https://github.com/AnisFaqihah/diabetes-prediction-2/raw/main/diabetes.csv"
@@ -65,22 +65,7 @@ user_input = get_user_input()
 st.subheader('User Input: ')
 st.write(user_input)
 
-#Create and train the model
-RandomForestClassifier = RandomForestClassifier()
-RandomForestClassifier.fit(X_train, Y_train)
-
-#Show the model metrics
-st.subheader('Model Test Accuracy Score:')
-st.write(str(accuracy_score(Y_test,RandomForestClassifier.predict(X_test)) * 100)+'%')
-
-#Store the models predictions in variable
-prediction = RandomForestClassifier.predict(user_input)
-
-#Set a subheader and display the prediction
-st.subheader('Prediction: ')
-st.write(prediction)
-
-##################################FINE TUNING##########################################
+#######################################################################################
 
 # Creating the hyperparameter grid 
 param_dist = {"max_depth": [3, None],
@@ -98,6 +83,25 @@ st.subheader('Tuned Parameters:')
 st.write(tree_cv.best_params_)
 st.subheader('Best score:')
 st.write(tree_cv.best_score_)
+
+#######################################################################################
+
+#Create and train the model
+RandomForestClassifier = RandomForestClassifier()
+RandomForestClassifier.fit(X_train, Y_train)
+
+#Show the model metrics
+st.subheader('Model Test Accuracy Score:')
+st.write(str(accuracy_score(Y_test,RandomForestClassifier.predict(X_test)) * 100)+'%')
+
+#Store the models predictions in variable
+prediction = RandomForestClassifier.predict(user_input)
+
+#Set a subheader and display the prediction
+st.subheader('Prediction: ')
+st.write(prediction)
+
+
 
 #Newline
 st.markdown("***")
