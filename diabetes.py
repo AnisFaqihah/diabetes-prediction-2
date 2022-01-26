@@ -100,7 +100,7 @@ def get_tune_input():
                   "criterion": criterion
                  }
     #Transform the data into a data frame
-    criteria = pd.DataFrame(tune_data, index = [0])
+    criteria = pd.DataFrame(tune_data)
     return criteria
 
 #Store the user input into a variable
